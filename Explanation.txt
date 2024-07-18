@@ -1,0 +1,47 @@
+https://regexr.com/ => Tools Generator
+* Pertemuan 1 -> 1, 2, 3, 4
+* Pertemuan 2 -> 5, 6, 7, 8
+
+1. Pemilihan
+Karakter pemilihan sering kali disebut juga dengan Karakter meta alternasi.
+Karakter meta pemilihan diwakili oleh karakter '|' (Garis lurus vertikal) dan dibaca sebagai 'atau'.
+Gunanya untuk memilih satu atau dua lebih alternatif yang tersedia 
+
+2. Pengelompokan
+diwakili oleh karakter (), yang digunakan untuk mengelompokkan set aturan. Pada umumnya karakter meta pengelompokkan digunakan bersamaan dengan karakter meta lain.  
+
+3. Set Karakter
+Diwakili oleh karakter kurung siku '[]', pada dasarnya digunakan untuk pemilihan layaknya karakter meta Alternasi. Namun, set karakter ini mempunyai fasilitas syntax rentang dan negasi (Menggunakan tanda ^).
+* [0-9] => angka 0 sampai 9
+* [A-EG-Z] => Semua huruf besar kecuali F 
+* [0-9][0-9] => 00 sampai 99 (100 Kombinasi)
+* [012][0-9] => 00 sampai 29 (30 Kombinasi)
+* [012][0-9]|30 => '00 sampai 29' atau 'angka 30' (31 Kombinasi)
+
+4. Quantifier
+Karakter ini menyatakan berapa rentang atau jumlah karakter yang diperbolehkan dari sebuah pola (Satu atau kelompok karakter yang berada disebelah kiri quantifier). Beberapa formatu quantifier:
+* X{n} => Set aturan X harus ada sebanyak n kali
+* X{n,} => Set aturan X harus ada minimal sebanyak n kali
+* X{,n} => Set aturan X boleh ada hingga terulang maksimal n buah
+* X{m,n} => Set aturan X boleh ada dari minimal m buah hingga terulang sebanyak maksimal n buah
+
+5. Optional
+Karakter meta optional diwakili oleh simbol Tanda Tanya '?'. Karakter meta optional dalam regex artinya huruf atau kelompok aturan yang berada pada sebelah kiri tanda tanya '?' bersifat optional. Dapat juga dibaca "Boleh ada atau boleh juga tidak"
+
+6. Titik/Dot
+Adalah simbol regex yang cocok dengan semua karakter tunggal kecuali nilai.
+Mewakili semua karakter kecuali new line
+
+7. Pengulangan
+DIwakili oleh simbol * atau +. Jika pada karakter meta pemilihan (?) dapat diartikan "Boleh ada atau tidak" atau "Nol atau satu", Maka kaakter meta * dapat diartikan "Nol atau lebih" dan karakter meta + dapat diartikan "Satu atau lebih" dari karakter atau set aturan yang tepat berada pada sebelah kiri karakter meta pengulangan tersebut 
+
+8. Anchor atau jangkar
+Diwakili simbol ^ atau $. Masing-masing simbol tersebut dapat diartikan "Harid di awal" dan "Harus di akhir". Karakter meta ini tidak melambangkan asti apapun, Melainkan mensyaratkan posisi atau penambatan pola ke string yang ingin dicocokkan. Itulah sebabnya pasangan karater meta ini disebut anchor atau jangkar.
+
+9. Modifier i (IGNORE_CASE)
+Tidak akan membedakan antara huruf besar dan kecil. Artinya pola [a-z] dengan modifier i akan dianggap sama dengan pola [a-zA-Z]. Modifier ini bermanfaat untuk mempersingkat pola, jika kita menginginkan pencocokan yang tidak membedakan huruf besar dan kecil. 
+
+10. Modifier m (MULTIPLE_LINE)
+
+11. Modifier g (GLOBAL_MATCH)
+Dengan modifier ini, pencocokan berikutnya akan dilanjutkan dari posisi terakhir yang ditemukan, tidak diulang dari posisi awal string. Terutama berguna jika ingin melakukan iterasi/perulangan string dari awal hingga akhir
