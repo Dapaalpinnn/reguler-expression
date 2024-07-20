@@ -1,16 +1,16 @@
 https://regexr.com/ => Tools Generator
 * Pertemuan 1 -> 1, 2, 3, 4
 * Pertemuan 2 -> 5, 6, 7, 8
+* Pertemuan 3 -> 9, 10, 11, 12
+* Pertemuan 4 -> 
 
-1. Pemilihan
-Karakter pemilihan sering kali disebut juga dengan Karakter meta alternasi.
-Karakter meta pemilihan diwakili oleh karakter '|' (Garis lurus vertikal) dan dibaca sebagai 'atau'.
-Gunanya untuk memilih satu atau dua lebih alternatif yang tersedia 
+1. Meta Alternation(Pemilihan)
+Meta alternation, sering disebut sebagai alternatif atau operator OR. Meta karakter ini digunakan untuk mencocokkan dua atau lebih pola alternatif dalam sebuah string. Gunanya untuk memilih satu atau dua lebih alternatif yang tersedia 
 
-2. Pengelompokan
-diwakili oleh karakter (), yang digunakan untuk mengelompokkan set aturan. Pada umumnya karakter meta pengelompokkan digunakan bersamaan dengan karakter meta lain.  
+2. Meta Grouping (Pengelompokan)
+Meta grouping diwakili oleh karakter (), digunakan untuk mengelompokkan set aturan. Pada umumnya karakter meta pengelompokkan digunakan bersamaan dengan karakter meta lain.  
 
-3. Set Karakter
+3. Character Set(Set Karakter)
 Diwakili oleh karakter kurung siku '[]', pada dasarnya digunakan untuk pemilihan layaknya karakter meta Alternasi. Namun, set karakter ini mempunyai fasilitas syntax rentang dan negasi (Menggunakan tanda ^).
 * [0-9] => angka 0 sampai 9
 * [A-EG-Z] => Semua huruf besar kecuali F 
@@ -25,7 +25,7 @@ Karakter ini menyatakan berapa rentang atau jumlah karakter yang diperbolehkan d
 * X{,n} => Set aturan X boleh ada hingga terulang maksimal n buah
 * X{m,n} => Set aturan X boleh ada dari minimal m buah hingga terulang sebanyak maksimal n buah
 
-5. Optional
+5. Meta Optional
 Karakter meta optional diwakili oleh simbol Tanda Tanya '?'. Karakter meta optional dalam regex artinya huruf atau kelompok aturan yang berada pada sebelah kiri tanda tanya '?' bersifat optional. Dapat juga dibaca "Boleh ada atau boleh juga tidak"
 
 6. Titik/Dot
@@ -33,15 +33,84 @@ Adalah simbol regex yang cocok dengan semua karakter tunggal kecuali nilai.
 Mewakili semua karakter kecuali new line
 
 7. Pengulangan
-DIwakili oleh simbol * atau +. Jika pada karakter meta pemilihan (?) dapat diartikan "Boleh ada atau tidak" atau "Nol atau satu", Maka kaakter meta * dapat diartikan "Nol atau lebih" dan karakter meta + dapat diartikan "Satu atau lebih" dari karakter atau set aturan yang tepat berada pada sebelah kiri karakter meta pengulangan tersebut 
+DIwakili oleh simbol * atau +. Maka karakter meta (*) dapat diartikan "Nol atau lebih" dan karakter meta (+) dapat diartikan "Satu atau lebih" dari karakter atau set aturan yang tepat berada pada sebelah kiri karakter meta pengulangan tersebut 
 
-8. Anchor atau jangkar
-Diwakili simbol ^ atau $. Masing-masing simbol tersebut dapat diartikan "Harid di awal" dan "Harus di akhir". Karakter meta ini tidak melambangkan asti apapun, Melainkan mensyaratkan posisi atau penambatan pola ke string yang ingin dicocokkan. Itulah sebabnya pasangan karater meta ini disebut anchor atau jangkar.
+8. Anchor (jangkar)
+Diwakili simbol ^ atau $. Simbol (^) artinya "Harus di awal" dan simbol ($) artinya "Harus di akhir". Karakter meta ini tidak melambangkan arti apapun, melainkan mensyaratkan posisi atau penambatan pola ke string yang ingin dicocokkan. 
 
 9. Modifier i (IGNORE_CASE)
 Tidak akan membedakan antara huruf besar dan kecil. Artinya pola [a-z] dengan modifier i akan dianggap sama dengan pola [a-zA-Z]. Modifier ini bermanfaat untuk mempersingkat pola, jika kita menginginkan pencocokan yang tidak membedakan huruf besar dan kecil. 
 
-10. Modifier m (MULTIPLE_LINE)
+10. Modifier s (SINGLE_LINE)
+Dengan Modifier "s", karakter meta "." (titik) akan cocok dengan newline. Dengan Modifier "s", setiap string akan dianggap terdiri sari satu baris saja.
 
-11. Modifier g (GLOBAL_MATCH)
-Dengan modifier ini, pencocokan berikutnya akan dilanjutkan dari posisi terakhir yang ditemukan, tidak diulang dari posisi awal string. Terutama berguna jika ingin melakukan iterasi/perulangan string dari awal hingga akhir
+11. Modifier m (MULTIPLE_LINE)
+multiline modifier, memungkinkan regex untuk mencocokkan pola di seluruh baris teks, bukan hanya satu baris.
+
+12. Modifier g (GLOBAL_MATCH)
+Dengan modifier ini, pencocokan berikutnya akan dilanjutkan dari posisi terakhir yang ditemukan, tidak diulang dari posisi awal string. Terutama berguna jika ingin melakukan iterasi/perulangan string dari awal hingga akhir (Melakukan pencarian secara global)
+
+13. Escape Meta Character
+Diwakili oleh / (backslash). Karakter ini digunakan untuk menjadikan karakter meta yang tepat berada dibelakang escape menjadi sebuah karakter literal atau karakter biasa.
+
+14. Character Classes
+digunakan untuk mendefinisikan atau menentukan set karakter. Character classes sering digunakan untuk mempersingkat atau menggantikan pola regex untuk kelompok string dengan maksud tertentu.
+
+@Shorthand class
+* \c => Control Character
+* \s => White space [\n\r\f\t]
+* \S => Not White Space [^\n\r\f\t]
+* \d => Digit [0-9]
+* \D => Not Digit [^0-9]
+* \w => Word [a-zA-Z0-9]
+* \W => Not Word [^a-zA-Z0-9]
+* \xMN => Hexadecimal Character
+* \0ABC => Octal Character
+
+@Posix Character Classes:
+* [:upper:] => Uppercase letter
+* [:lower:] => Lowercase letter
+* [:alpha:] => All letters (Lowers and upper letters)
+* [:alnum:] => Digits and letters
+* [:digit:] => Digits
+* [:xdigit:] => Hexadecimal Digits
+* [:punct:] => punctuation
+* [:blank:] => Space and tab
+* [:space:] => Blank Characters
+* [:cntrl:] => Control characters
+* [:graph:] => Printed Characters
+* [:print:] => printed characters and space
+* [:word:] => Word (digits, letters, and underscore)
+Contoh penulisan: [[:lower:]]
+
+@Unicode Character Classes:
+* \p{L} => Letter
+* \p{Ll} => Lowercase letters
+* \p{Lm} => Modifier letters
+* \p{Lo} => Letters, other. These have no case and are not considered modifiers
+* \p{Lt} => Tittlecase letters
+* \p{Lu} => Uppercase letters
+* \p{C} => Control codes and characters not in other categories
+* \p{Cc} => ASCII and latin-1 control characters
+* \p{Cf} => Non-visible formatting characters
+* \p{Cn} => Unassigned Code Points
+* \p{Co} => Private use such as company logos
+* \p{Cs} => Surrogates
+* \p{M} => Marks meant to combine with base characters, such as accent Marks
+* \p{Mc} => Modification characters that take up their own space. Examples include "vowel signs"
+* \p{Me} => Marks that enclose other characters, such as circles, squares, and diamonds
+* \p{Mn} => Characters that modify other characters, such as accents and umlauts.
+* \p{N} => Numeric characters
+* \p{Nd} => Decimal digits in various scripts
+* \p{Nl} => Letters that are numbers, such as Roman numerals
+* \p{No} => Superscripts, symbols, or non-digit characters representing numbers
+* \p{P} => Punctuation 
+* \p{Pc} => connecting punctuation, such as an underscore
+* \p{Pd} => Dashes and hyphens
+* \p{Pe} => Closing punctuation complementing \p{Ps}
+* \p{Pi} => Initial punctuation, such as opening quotes
+* \p{Pf} => Final punctuation, such as closng quotes
+* \p{Po} => Other Punctuation marks
+* \p{Ps} => Opening punctuation, such as opening parentheses
+* \p{S} => Symbols
+* \p{Sc} => Currency

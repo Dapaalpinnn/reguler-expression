@@ -4,8 +4,8 @@ $matches = [];
 
 $text_one = 
 <<<text
-This apple is so sweet
-Andi eating apple
+Apple is my favorite fruit
+The apple is available
 Andi eats a lot of apples
 text;
 
@@ -15,7 +15,7 @@ Apple
 text;
 
 // Kata yang berada diawal (diawali)
-$regex_two = preg_match_all("/^This/", $text_one, $matches); 
+$regex_two = preg_match_all("/^Apple/", $text_one, $matches); 
 var_dump($matches); 
 
 // Kata yang berada diakhir (diakhiri)

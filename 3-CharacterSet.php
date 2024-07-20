@@ -11,7 +11,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 text;
 
 $regex = preg_match_all("/[012][0-9]|30/", $text, $matches);
+var_dump($matches);
 
+$regex = preg_match_all("/^[012][0-9]|30/", $text, $matches);
 var_dump($matches);
 
 ?>

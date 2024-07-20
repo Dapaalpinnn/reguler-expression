@@ -11,8 +11,7 @@ Line 4 : Apple
 text;
 
 // Multiline and Incase Sensitive
-$regex = preg_match_all("/(^line)|(Apple.$)/mis", $text, $matches); 
-
+$regex = preg_match_all("/apple$/mi", $text, $matches); 
 print_r($matches); 
 
 ?>
